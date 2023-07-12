@@ -36,6 +36,10 @@ export default function Forms(props){
         props.showAlert("Extra spaces cleared!","success");
 
     };
+    const handleCopy = () => {
+        navigator.clipboard.writeText(text); 
+        props.showAlert("Copied to Clipboard!", "success");
+    }
 
     function wordscount(str){
         let newText = str.replace(/\s+/g,' ').trim();
@@ -65,6 +69,7 @@ export default function Forms(props){
             <button disabled={text.length===0} className="btn btn-primary mx-2 my-2" onClick={handleLoClick}>Lowercase</button>
             <button disabled={text.length===0} className="btn btn-primary mx-2 my-2" onClick={clearText}>Clear Text</button>
             <button disabled={text.length===0} className="btn btn-primary mx-2 my-2" onClick={removeExtraSpaces}>Remove Extra Spaces</button>
+            <button disabled={text.length===0} className="btn btn-primary mx-2 my-2" onClick={handleCopy}>Copy Text</button>
         
         </div>
         <div className='container my-3' style={{color:props.mode==='light'?'black':'white'}}>
