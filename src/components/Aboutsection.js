@@ -1,34 +1,15 @@
-import React, {useState} from 'react'
+import React from 'react'
 
-export default function Aboutsection() {
-    const [myStyle,setmyStyle] = useState({
-        color:"black",
-        backgroundColor:"white"
-    });
+export default function Aboutsection(props) {
+    // const [myStyle,setmyStyle] = useState({
+    //     color:"black",
+    //     backgroundColor:"white"
+    // });
 
-    const [Button,setButton] = useState("Enable Dark Mode");
-
-    const enableDark=()=>{
-        if(myStyle.color==="white"){
-
-            setmyStyle({
-                color:"black",
-                backgroundColor:"white"
-            });
-            setButton("Enable Dark Mode");
-
-        }
-        else{
-            setmyStyle({
-                color:"white",
-                backgroundColor:"black",
-                border:"1px solid white"
-            });
-            setButton("Enable Light Mode");
-
-        }
+    const myStyle = {
+     color:props.mode==='light'?'black':'white', 
+     backgroundColor:props.mode==='dark'?'#3c79d3':'white'
     }
-    
 
     return (
         <>
@@ -69,9 +50,6 @@ export default function Aboutsection() {
                         <strong>This is the third item's accordion body.</strong> It is hidden by default, until the collapse plugin adds the appropriate classNamees that we use to style each element. These classNamees control the overall appearance, as well as the showing and hiding via CSS transitions. You can modify any of this with custom CSS or overriding our default variables. It's also worth noting that just about any HTML can go within the <code>.accordion-body</code>, though the transition does limit overflow.
                     </div>
                     </div>
-                </div>
-                <div className="container my-2"> 
-                <button type="button" className=" btn btn-primary" onClick={enableDark}> {Button}</button>
                 </div>
             </div>
 

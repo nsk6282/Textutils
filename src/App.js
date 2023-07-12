@@ -5,9 +5,7 @@ import Navbar from "./components/Navbar";
 import Forms from "./components/Forms";
 import Aboutsection from './components/Aboutsection';
 import Alert from './components/Alert';
-// import { BrowserRouter as Router, Route, Routes, NavLink } from 'react-router-dom'
-
-
+import { BrowserRouter as Router, Route, Routes} from 'react-router-dom'
 
 function App() {
 
@@ -25,11 +23,23 @@ function App() {
     }, 2000);
 
   }
+  function removeAllclasses(){
+    document.body.classList.remove("bg-primary");
+    document.body.classList.remove("bg-secondary");
+    document.body.classList.remove("bg-danger");
+    document.body.classList.remove("bg-success");
+    document.body.classList.remove("bg-light");
+    document.body.classList.remove("bg-dark");
+    document.body.classList.remove("bg-warning");
+  }
 
-  const toggleMode=()=>{
+  const toggleMode=(cls)=>{
+    // removeAllclasses();
+    // document.body.classList.add("bg-"+cls);
     if(mode==='light'){
+      
       setmode('dark');
-      document.body.style.backgroundColor="grey";
+      document.body.style.backgroundColor="#04275a";
       showAlert("dark mode enabled", "success");
     }
     else{
@@ -41,17 +51,16 @@ function App() {
 
   return (
     <>
-    {/* <Router> */}
+    <Router>
     <div className=' my3' style={{width:"100%"}}>
       <Navbar title="Textutils" toggleMode={toggleMode} mode={mode}/>
       <Alert alert={alert}  / >
-      <Forms showAlert={showAlert} title="Enter text" mode={mode}/>
-      {/* <Routes>
+      <Routes>
       <Route exact path="/" element={<Forms showAlert={showAlert} title="Enter text" mode={mode}/>}/>
-      <Route exact path="/about" element={<Aboutsection/>}/>        
-      </Routes> */}
+      <Route exact path="/about" element={<Aboutsection showAlert={showAlert} mode={mode}/>}/>        
+      </Routes>
     </div>
-    {/* </Router> */}
+    </Router>
     </>
     
   );
